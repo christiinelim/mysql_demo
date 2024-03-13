@@ -79,3 +79,49 @@ insert into locations (name, address) VALUES
 ("Ang Mo Kio Swimming Complex", "Ang Mo Kio Road 456"),
 ("Tampines Swimming Complex", "Tampines West 518");
 ```
+
+# Foreign Keys
+
+## 1. Create the `students` table
+```
+CREATE TABLE students (
+    student_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name varchar(45) NOT NULL,
+    swimming_level VARCHAR(45),
+    dob DATE not null
+) ENGINE = innodb;
+```
+
+## 2. Add in the column for the foreign key
+We will use the `ALTER TABLE` command which allows us to make changes to a table
+```
+ALTER TABLE students ADD COLUMN parent_id INT UNSIGNED;
+```
+
+## 3. Define the foreign key
+```
+ALTER TABLE students ADD CONSTRAINT fk_students_parents
+    FOREIGN KEY (parent_id) REFERENCES parents(parent_id);
+```
+
+## 4. Add in some students
+```
+INSERT INTO students (name, swimming_level, dob, parent_id) 
+VALUES ("Mary Snow", "Beginner", "2019-01-01", 1);
+```
+
+# How to add a new column to a table
+Add email address to parents:
+```
+ALTER TABLE parents ADD COLUMN email VARCHAR(100);
+```
+
+# How to remove a column from a table
+```
+ALTER TABLE parents DROP COLUMN email;
+```
+
+# How to delete an entire table
+```
+DROP TABLE parents;
+```
