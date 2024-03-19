@@ -8,6 +8,7 @@
             <th>Last Name</th>
             <th>Rating</th>
             <th>Company ID</th>
+            <th>Delete?</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +17,10 @@
             <td>{{this.first_name}}</td>
             <td>{{this.last_name}}</td>
             <td>{{this.rating}}</td>
-            <td>{{this.company_id}}</td>
+            <td>{{this.company_name}}</td>
+            <td>
+                <a href="/delete-customers/{{this.customer_id}}" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
         {{/each}}
     </tbody>
